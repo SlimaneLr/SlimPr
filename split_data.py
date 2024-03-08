@@ -1,12 +1,14 @@
 import pandas as pd
-from PyQt6 import QtWidgets, QtGui
+from PyQt6 import QtWidgets, QtGui, uic
 from split_data_ui import Ui_MainWindow
 import sys
 
-class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
+class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow): 
+    
     def __init__(self):
         super(MainWindow, self).__init__()
         self.setupUi(self)
+        uic.load_ui("./new_spl_ui.ui")
 
         self.Open_file.clicked.connect(self.load_file)
         self.Split_data.clicked.connect(self.split_data)

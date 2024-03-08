@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>632</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QFrame" name="frame_2">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>55</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <widget class="QPushButton" name="Open_file">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>10</y>
+            <width>91</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Open File</string>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="Real_data">
+          <property name="geometry">
+           <rect>
+            <x>260</x>
+            <y>10</y>
+            <width>89</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>real data</string>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="X_train">
+          <property name="geometry">
+           <rect>
+            <x>350</x>
+            <y>10</y>
+            <width>89</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>X train</string>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="Y_train">
+          <property name="geometry">
+           <rect>
+            <x>440</x>
+            <y>10</y>
+            <width>89</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Y train</string>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="X_test">
+          <property name="geometry">
+           <rect>
+            <x>550</x>
+            <y>10</y>
+            <width>89</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>X test</string>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="Y_test">
+          <property name="geometry">
+           <rect>
+            <x>660</x>
+            <y>10</y>
+            <width>89</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Y test</string>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_3">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QTabWidget" name="tabWidget">
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="tab_3">
+             <attribute name="title">
+              <string>Data</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout">
+              <item>
+               <widget class="QTableWidget" name="tableWidget"/>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tab_4">
+             <attribute name="title">
+              <string>Plot</string>
+             </attribute>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_4">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>35</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <widget class="QPushButton" name="Split_data">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>0</y>
+            <width>75</width>
+            <height>24</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Split data</string>
+          </property>
+         </widget>
+         <widget class="QSpinBox" name="spinBox">
+          <property name="geometry">
+           <rect>
+            <x>140</x>
+            <y>0</y>
+            <width>51</width>
+            <height>22</height>
+           </rect>
+          </property>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
