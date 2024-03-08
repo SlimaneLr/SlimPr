@@ -2,6 +2,7 @@ import pandas as pd
 from PyQt6 import QtWidgets, QtGui, uic
 from PyQt6.QtWidgets import QMessageBox
 from PyQt6.QtGui import QColor
+from random import randrange
 import sys
 
 
@@ -61,7 +62,17 @@ class MainWindow(QtWidgets.QMainWindow):
         
         test_rows = spl_value * self.tableWidget.rowCount() / 100
         print(self.tableWidget.item(0,0).background().color().name())
-        self.tableWidget.item(0,0).setBackground()
+        
+        for i in range(int(test_rows)):
+            rn = randrange(self.tableWidget.rowCount())
+            if self.tableWidget.item(rn, 0).background().color().name() == "#abffbf" :
+                self.tableWidget.item(rn, 0).setBackground(QColor(242,255,171))
+                self.tableWidget.item(rn, 1).setBackground(QColor(242,255,171))
+                self.tableWidget.item(rn, 2).setBackground(QColor(242,255,171))
+                self.tableWidget.item(rn, 3).setBackground(QColor(242,255,171))
+                self.tableWidget.item(rn, 4).setBackground(QColor(242,255,171))
+                self.tableWidget.item(rn, 5).setBackground(QColor(242,255,171))
+                
         
         
         
