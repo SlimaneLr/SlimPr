@@ -1,5 +1,7 @@
 import pandas as pd
 from PyQt6 import QtWidgets, QtGui, uic
+from PyQt6.QtWidgets import QMessageBox
+from PyQt6.QtGui import QColor
 import sys
 
 
@@ -24,6 +26,12 @@ class MainWindow(QtWidgets.QMainWindow):
         self.Open_file.clicked.connect(self.load_file)
         self.Split_data.clicked.connect(self.split_data)
         
+    def alert_(self, message):
+        alert = QMessageBox()
+        alert.setWindowTitle("alert")
+        alert.setText(message)
+        alert.exec()
+        
     
     def load_file(self):
         filePath, _ = QtWidgets.QFileDialog.getOpenFileName(self, 'Open File', '', 'CSV Files (*.csv)')
@@ -41,9 +49,23 @@ class MainWindow(QtWidgets.QMainWindow):
         for row in range(df.shape[0]):
             for col in range(df.shape[1]):
                 self.tableWidget.setItem(row, col, QtWidgets.QTableWidgetItem(str(df.iloc[row, col])))
+                self.tableWidget.item(row, col).setBackground(QColor(171,255,191))
                 
     def split_data(self):
-        return 1
+        spl_value = int(self.spinBox.text())
+        self.spinBox.setValue(0)
+        if(spl_value > 30):
+            self.alert_("Testing value must be less than 30%")
+        
+        
+        
+        test_rows = spl_value * self.tableWidget.rowCount() / 100
+        print(self.tableWidget.item(0,0).background().color().name())
+        self.tableWidget.item(0,0).setBackground()
+        
+        
+        
+        
         
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
