@@ -27,12 +27,12 @@ class MainWindow(QtWidgets.QMainWindow):
         self.Open_file.clicked.connect(self.load_file)
         self.Split_data.clicked.connect(self.split_data)
         self.Split_data.setEnabled(False)
+
     def alert_(self, message):
         alert = QMessageBox()
         alert.setWindowTitle("alert")
         alert.setText(message)
         alert.exec()
-        #weeee
 
     def load_file(self):
         filePath, _ = QtWidgets.QFileDialog.getOpenFileName(self, 'Open File', '', 'CSV Files (*.csv)')
@@ -64,7 +64,7 @@ class MainWindow(QtWidgets.QMainWindow):
             print(test_rows)
             for i in range(int(test_rows)):
                 rn = randrange(self.tableWidget.rowCount())
-                if self.tableWidget.item(rn, 0).background().color().name() == "#abffbf" :
+                if self.tableWidget.item(rn, 0).background().color().name() == "#abffbf":
                     self.tableWidget.item(rn, 0).setBackground(QColor(242,255,171))
                     self.tableWidget.item(rn, 1).setBackground(QColor(242,255,171))
                     self.tableWidget.item(rn, 2).setBackground(QColor(242,255,171))
@@ -74,13 +74,13 @@ class MainWindow(QtWidgets.QMainWindow):
                     self.tableWidget.item(rn, 6).setBackground(QColor(242,255,171))
                     self.tableWidget.item(rn, 7).setBackground(QColor(242,255,171))
                     self.tableWidget.item(rn, 8).setBackground(QColor(242,255,171))
-        
 
-        
-        
-        
-        
-        
+
+
+
+
+
+
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     mainWindow = MainWindow()
