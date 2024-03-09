@@ -32,8 +32,8 @@ class MainWindow(QtWidgets.QMainWindow):
         alert.setWindowTitle("alert")
         alert.setText(message)
         alert.exec()
-        #weee
-    
+        #weeee
+
     def load_file(self):
         filePath, _ = QtWidgets.QFileDialog.getOpenFileName(self, 'Open File', '', 'CSV Files (*.csv)')
         if not filePath:
