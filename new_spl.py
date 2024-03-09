@@ -27,6 +27,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.Open_file.clicked.connect(self.load_file)
         self.Split_data.clicked.connect(self.split_data)
         self.Split_data.setEnabled(False)
+        #hello
     def alert_(self, message):
         alert = QMessageBox()
         alert.setWindowTitle("alert")
