@@ -1,6 +1,6 @@
 import pandas as pd
 from PyQt6 import QtWidgets, QtGui, uic
-from PyQt6.QtWidgets import QMessageBox
+from PyQt6.QtWidgets import QMessageBox, QButtonGroup
 from PyQt6.QtGui import QColor
 from random import randrange
 import sys
@@ -38,17 +38,16 @@ class MainWindow(QtWidgets.QMainWindow):
         if not filePath:
             return
         if filePath.endswith('.csv'):
-            df = pd.read_csv(filePath)
+            self.df = pd.read_csv(filePath)
         else:
             raise ValueError("Unsupported file format")
+        self.tableWidget.setRowCount(self.df.shape[0])
+        self.tableWidget.setColumnCount(self.df.shape[1])
+        self.tableWidget.setHorizontalHeaderLabels(self.df.columns)
 
-        self.tableWidget.setRowCount(df.shape[0])
-        self.tableWidget.setColumnCount(df.shape[1])
-        self.tableWidget.setHorizontalHeaderLabels(df.columns)
-
-        for row in range(df.shape[0]):
-            for col in range(df.shape[1]):
-                self.tableWidget.setItem(row, col, QtWidgets.QTableWidgetItem(str(df.iloc[row, col])))
+        for row in range(self.df.shape[0]):
+            for col in range(self.df.shape[1]):
+                self.tableWidget.setItem(row, col, QtWidgets.QTableWidgetItem(str(self.df.iloc[row, col])))
                 self.tableWidget.item(row, col).setBackground(QColor(171, 255, 191))
         self.Split_data.setEnabled(True)
 
@@ -64,11 +63,9 @@ class MainWindow(QtWidgets.QMainWindow):
             for i in range(int(test_rows)):
                 rn = randrange(self.tableWidget.rowCount())
                 col = self.tableWidget.columnCount()-1
-                print(col)
                 for c in range(int(col)):
                     if self.tableWidget.item(rn, c).background().color().name() == "#abffbf":
                         self.tableWidget.item(rn, c).setBackground(QColor(242, 255, 171))
-
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
