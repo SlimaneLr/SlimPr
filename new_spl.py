@@ -4,7 +4,7 @@ from PyQt6.QtWidgets import QMessageBox, QButtonGroup
 from PyQt6.QtGui import QColor
 from random import randrange
 import sys
-
+# hehehehe
 
 class MainWindow(QtWidgets.QMainWindow):
 
