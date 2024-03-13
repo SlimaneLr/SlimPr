@@ -78,9 +78,15 @@ class MainWindow(QtWidgets.QMainWindow):
             for i in range(int(test_rows)):
                 rn = randrange(self.tableWidget.rowCount())
                 col = self.tableWidget.columnCount()-1
+                while self.tableWidget.item(rn, 0).background().color().name() == "#f2ffab" :
+                    print(rn)
+                    rn = randrange(self.tableWidget.rowCount())
+                    print("false random.........................")
                 for c in range(int(col)):
                     if self.tableWidget.item(rn, c).background().color().name() == "#abffbf":
                         self.tableWidget.item(rn, c).setBackground(QColor(242, 255, 171))
+                        
+                
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
