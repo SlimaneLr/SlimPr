@@ -25,7 +25,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.Open_file.clicked.connect(self.load_file)
         self.Split_data.clicked.connect(self.split_data)
-        self.Split_data.setEnabled(False)
 
     def alert_(self, message):
         alert = QMessageBox()
@@ -49,12 +48,28 @@ class MainWindow(QtWidgets.QMainWindow):
             for col in range(self.df.shape[1]):
                 self.tableWidget.setItem(row, col, QtWidgets.QTableWidgetItem(str(self.df.iloc[row, col])))
                 self.tableWidget.item(row, col).setBackground(QColor(171, 255, 191))
-        self.Split_data.setEnabled(True)
+                
+        self.tableWidget.setColumnWidth(0, 140)
+        self.tableWidget.setColumnWidth(1, 140)
+        self.tableWidget.setColumnWidth(2, 140)
+        self.tableWidget.setColumnWidth(3, 140)
+        self.tableWidget.setColumnWidth(4, 140)
+        self.tableWidget.setColumnWidth(5, 140)
+        self.tableWidget.setColumnWidth(6, 140)
+        self.tableWidget.setColumnWidth(7, 140)
+        self.tableWidget.setColumnWidth(8, 140)
+        self.tableWidget.setColumnWidth(9, 80)
+        
+        
 
     def split_data(self):
+        
         spl_value = int(self.spinBox.text())
         self.spinBox.setValue(0)
-        self.Split_data.setEnabled(False)
+        for row in range(self.df.shape[0]):
+            for col in range(self.df.shape[1]):
+                self.tableWidget.item(row, col).setBackground(QColor(171, 255, 191))
+                
         if spl_value > 30:
             self.alert_("Testing value must be less than 30%")
         else:
