@@ -32,6 +32,12 @@ class MainWindow(QtWidgets.QMainWindow):
         self.X_test.setEnabled(False)
         self.Y_test.setEnabled(False)
 
+        self.Real_data.toggled.connect(self.update_table_real_data)
+        self.X_test.toggled.connect(self.update_table_x_test)
+        self.X_train.toggled.connect(self.update_table_x_train)
+        self.Y_test.toggled.connect(self.update_table_y_test)
+        self.Y_train.toggled.connect(self.update_table_y_train)
+
     def alert_(self, message):
         alert = QMessageBox()
         alert.setWindowTitle("Alert")
@@ -86,23 +92,21 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def split_data(self):
         
-        self.Real_data.setChecked(True)
-        
-        self.Real_data.setEnabled(True)
-        self.X_train.setEnabled(True)
-        self.Y_train.setEnabled(True)
-        self.X_test.setEnabled(True)
-        self.Y_test.setEnabled(True)
-        
         spl_value = int(self.spinBox.text())
         self.spinBox.setValue(0)
         for row in range(self.df.shape[0]):
             for col in range(self.df.shape[1]):
                 self.tableWidget.item(row, col).setBackground(QColor(171, 255, 191))
                 
-        if spl_value > 30:
-            self.alert_("Testing value must be less than 30%")
+        if spl_value > 30 or spl_value == 0:
+            self.alert_("Testing value must be less than 30% " + "and greater than 0%")
         else:
+            self.Real_data.setChecked(True)
+            self.Real_data.setEnabled(True)
+            self.X_train.setEnabled(True)
+            self.Y_train.setEnabled(True)
+            self.X_test.setEnabled(True)
+            self.Y_test.setEnabled(True)
             test_rows = spl_value * self.tableWidget.rowCount() / 100
             print(int(test_rows))
             for i in range(int(test_rows)):
@@ -115,9 +119,35 @@ class MainWindow(QtWidgets.QMainWindow):
                 for c in range(int(col)):
                     if self.tableWidget.item(rn, c).background().color().name() == "#abffbf":
                         self.tableWidget.item(rn, c).setBackground(QColor(242, 255, 171))
+                    
+            self.alert_("data splited")
                         
                         
+    def update_table_real_data(self):
+        rb = self.sender()
+        if rb.isChecked():
+            print("real data checked")
+
+    def update_table_x_test(self):
+        rb = self.sender()
+        if rb.isChecked():
+            print("x_test checked")
+
+    def update_table_y_test(self):
+        rb = self.sender()
+        if rb.isChecked():
+            print("y_test checked")
+
+    def update_table_x_train(self):
+        rb = self.sender()
+        if rb.isChecked():
+            print("x_train checked")
     
+    def update_table_y_train(self):
+        rb = self.sender()
+        if rb.isChecked():
+            print("y_train checked")
+
                         
                 
 
