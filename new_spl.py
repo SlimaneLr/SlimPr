@@ -17,14 +17,20 @@ class MainWindow(QtWidgets.QMainWindow):
         self.tableWidget = self.findChild(QtWidgets.QTableWidget, "tableWidget")
 
         self.spinBox = self.findChild(QtWidgets.QSpinBox, "spinBox")
-        self.Real_data = self.findChild(QtWidgets.QCheckBox, "Real_data")
-        self.X_train = self.findChild(QtWidgets.QCheckBox, "X_train")
-        self.Y_train = self.findChild(QtWidgets.QCheckBox, "Y_train")
-        self.X_test = self.findChild(QtWidgets.QCheckBox, "X_test")
-        self.Y_test = self.findChild(QtWidgets.QCheckBox, "Y_test")
+        self.Real_data = self.findChild(QtWidgets.QRadioButton, "Real_data")
+        self.X_train = self.findChild(QtWidgets.QRadioButton, "X_train")
+        self.Y_train = self.findChild(QtWidgets.QRadioButton, "Y_train")
+        self.X_test = self.findChild(QtWidgets.QRadioButton, "X_test")
+        self.Y_test = self.findChild(QtWidgets.QRadioButton, "Y_test")
 
         self.Open_file.clicked.connect(self.load_file)
         self.Split_data.clicked.connect(self.split_data)
+
+        self.Real_data.setEnabled(False)
+        self.X_train.setEnabled(False)
+        self.Y_train.setEnabled(False)
+        self.X_test.setEnabled(False)
+        self.Y_test.setEnabled(False)
 
     def alert_(self, message):
         alert = QMessageBox()
@@ -33,18 +39,18 @@ class MainWindow(QtWidgets.QMainWindow):
         alert.exec()
 
     def load_file(self):
-        #self.Real_data.setChecked(False)
-        #self.X_train.setChecked(False)
-        #self.Y_train.setChecked(False)
-        #self.X_test.setChecked(False)
-        #self.Y_test.setChecked(False)
+        self.Real_data.setChecked(False)
+        self.X_train.setChecked(False)
+        self.Y_train.setChecked(False)
+        self.X_test.setChecked(False)
+        self.Y_test.setChecked(False)
         
         
-        #self.Real_data.setEnabled(False)
-        #self.X_train.setEnabled(False)
-        #self.Y_train.setEnabled(False)
-        #self.X_test.setEnabled(False)
-        #self.Y_test.setEnabled(False)
+        self.Real_data.setEnabled(False)
+        self.X_train.setEnabled(False)
+        self.Y_train.setEnabled(False)
+        self.X_test.setEnabled(False)
+        self.Y_test.setEnabled(False)
         
         
         
@@ -80,13 +86,13 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def split_data(self):
         
-        #self.Real_data.setChecked(True)
+        self.Real_data.setChecked(True)
         
-        #self.Real_data.setEnabled(True)
-        #self.X_train.setEnabled(True)
-        #self.Y_train.setEnabled(True)
-        #self.X_test.setEnabled(True)
-        #self.Y_test.setEnabled(True)
+        self.Real_data.setEnabled(True)
+        self.X_train.setEnabled(True)
+        self.Y_train.setEnabled(True)
+        self.X_test.setEnabled(True)
+        self.Y_test.setEnabled(True)
         
         spl_value = int(self.spinBox.text())
         self.spinBox.setValue(0)
